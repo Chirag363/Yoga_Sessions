@@ -5,110 +5,93 @@ A full-stack application for managing wellness sessions (yoga/meditation flows) 
 ## Features
 
 - User registration and authentication
-- Session creation and editing
-- Auto-save functionality (5s inactivity or 30s interval)
+- Session creation and editing with JSON content
+- Auto-save functionality (30s interval or 5s inactivity)
 - Session publishing and draft management
-- Responsive design
-- Real-time feedback for saves
+- Tag-based organization and search
+- Responsive design with real-time feedback
 
 ## Tech Stack
 
-### Frontend
-- React 18 with TypeScript
-- Tailwind CSS for styling
-- React Router for navigation
-- React Hot Toast for notifications
-- Axios for API calls
-
-### Backend
-- Node.js with Express and TypeScript
-- MongoDB with Mongoose ODM
-- JWT for authentication
-- bcryptjs for password hashing
-- Express Validator for input validation
-- Helmet and CORS for security
-
-### Key Features
-- **Auto-save**: Sessions auto-save every 30 seconds or after 5 seconds of inactivity
-- **Real-time feedback**: Visual indicators for save status
-- **Responsive design**: Works on desktop and mobile devices
-- **Session management**: Create, edit, draft, and publish sessions
-- **Search functionality**: Filter sessions by tags
-- **Authentication**: Secure user registration and login
+**Frontend:** React 18 + TypeScript, Tailwind CSS, React Router  
+**Backend:** Node.js + Express + TypeScript, MongoDB + Mongoose, JWT Authentication
 
 ## Project Structure
 
 ```
+Arvyax_1/
 ├── frontend/          # React application
+│   ├── src/pages/     # Main pages (Dashboard, Editor, View)
+│   ├── src/services/  # API calls
+│   └── src/components/# Reusable components
 ├── backend/           # Node.js API server
+│   ├── models/        # Database models (User, Session)
+│   ├── routes/        # API routes (auth, sessions)
+│   └── middleware/    # Authentication middleware
 └── README.md
 ```
 
-## Getting Started
+## Quick Setup
 
 ### Prerequisites
-- Node.js (v16 or higher)
-- MongoDB Atlas account (free tier available)
+- Node.js (v16+)
+- MongoDB (local or Atlas)
 
-### Quick Setup (Windows)
-1. Set up MongoDB Atlas (see MONGODB_ATLAS_SETUP.md)
-2. Update `.env` file with your Atlas connection string
-3. Double-click `install.bat` to install all dependencies
-4. Double-click `start-app.bat` to start the application
+### Installation
 
-### Manual Setup
-
-#### Step 1: MongoDB Atlas Setup
-1. Create account at https://www.mongodb.com/atlas
-2. Create a new cluster (free tier)
-3. Get your connection string
-4. Update `backend/.env` with your MongoDB Atlas URI
-
-#### Step 2: Backend Setup
+1. **Backend Setup**
 ```bash
 cd backend
 npm install
-# For development (runs TypeScript directly)
-npm run dev
-
-# For production (compile first, then run)
-npm run build
-npm start
+# Configure .env with MongoDB URI and JWT secret
+npm run dev  # Starts on http://localhost:5000
 ```
 
-#### Step 3: Frontend Setup
+2. **Frontend Setup**
 ```bash
 cd frontend
 npm install
-npm start
+# Configure .env with API URL
+npm start    # Starts on http://localhost:3000
 ```
 
-### Access the Application
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:5000/api
-- Health Check: http://localhost:5000/api/health
+### Environment Variables
 
-### Important Notes
-1. **MongoDB Atlas Required**: Set up a free MongoDB Atlas cluster and update the .env file
-2. **Environment Variables**: Update `backend/.env` with your Atlas connection string
-3. **Auto-save**: The session editor automatically saves changes every 30 seconds or after 5 seconds of inactivity
-4. **CORS**: Frontend and backend are configured to work together on localhost
-5. **Data Persistence**: All user data and sessions are stored in MongoDB Atlas
+**Backend (.env)**
+```env
+MONGODB_URI=mongodb://localhost:27017/wellness-sessions
+JWT_SECRET=your_secret_key
+PORT=5000
+```
 
-### MongoDB Atlas Setup
-- **Create Account**: Go to [MongoDB Atlas](https://www.mongodb.com/atlas) and create a free account
-- **Create Cluster**: Use the free tier to create a new cluster
-- **Get Connection String**: Click "Connect" → "Connect your application" and copy the connection string
-- **Update .env**: Replace the MONGODB_URI in `backend/.env` with your Atlas connection string
-- **Whitelist IP**: Add your IP address in Atlas "Network Access" settings
+**Frontend (.env)**
+```env
+REACT_APP_API_URL=http://localhost:5000/api
+```
 
 ## API Endpoints
 
-- POST `/api/auth/register` - User registration
-- POST `/api/auth/login` - User login
-- GET `/api/sessions` - Get all public sessions
-- GET `/api/my-sessions` - Get user's sessions
-- POST `/api/my-sessions` - Create new session
-- PUT `/api/my-sessions/:id` - Update session
-- DELETE `/api/my-sessions/:id` - Delete session
-- PUT `/api/my-sessions/:id/publish` - Publish session
+### Authentication
+- `POST /api/auth/register` - User registration
+- `POST /api/auth/login` - User login
+- `GET /api/auth/me` - Get current user
+
+### Sessions
+- `GET /api/sessions/public` - Get public sessions
+- `GET /api/sessions/my` - Get user's sessions
+- `GET /api/sessions/public/:id` - Get specific public session
+- `GET /api/sessions/my/:id` - Get user's specific session
+- `POST /api/sessions` - Create new session
+- `PUT /api/sessions/:id` - Update session
+- `DELETE /api/sessions/:id` - Delete session
+- `POST /api/sessions/:id/publish` - Publish session
+
+## Access Points
+
+- **Frontend:** http://localhost:3000
+- **Backend API:** http://localhost:5000/api
+- **Health Check:** http://localhost:5000/health
+
+---
+
+For detailed setup instructions, see

@@ -1,0 +1,195 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom CSS Variables - Green Theme */
+:root {
+  --primary-50: #f0fdf4;
+  --primary-100: #dcfce7;
+  --primary-200: #bbf7d0;
+  --primary-300: #86efac;
+  --primary-400: #4ade80;
+  --primary-500: #22c55e;
+  --primary-600: #16a34a;
+  --primary-700: #15803d;
+  --primary-800: #166534;
+  --primary-900: #14532d;
+  --primary-950: #052e16;
+}
+
+/* Custom Component Classes */
+@layer components {
+  .btn-primary {
+    @apply bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-outline {
+    @apply border border-green-500 text-green-500 hover:bg-green-500 hover:text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Enhanced Button Styles */
+  .btn-gradient-primary {
+    @apply bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold py-2 px-6 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-elegant-secondary {
+    @apply bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 text-gray-700 font-medium py-2 px-4 rounded-xl border border-gray-200 hover:border-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-elegant-success {
+    @apply bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-medium py-2 px-4 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-elegant-danger {
+    @apply bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-medium py-2 px-4 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200;
+  }
+
+  .input-field-elegant {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-xl bg-white/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 focus:bg-white transition-all duration-200 placeholder-gray-400;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md border border-gray-200 p-6;
+  }
+
+  .card-hover {
+    @apply hover:shadow-lg hover:border-orange-200 transition-all duration-200 cursor-pointer;
+  }
+
+  .card-elegant {
+    @apply bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 hover:shadow-xl hover:border-green-200/50 transition-all duration-300;
+  }
+
+  /* Container responsive utility */
+  .container-responsive {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Auto-save indicator styles */
+  .auto-save-indicator {
+    @apply flex items-center space-x-2 text-sm font-medium px-3 py-1.5 rounded-full transition-all duration-200;
+  }
+
+  .auto-save-indicator.idle {
+    @apply bg-gray-100 text-gray-600;
+  }
+
+  .auto-save-indicator.saving {
+    @apply bg-blue-50 text-blue-600;
+  }
+
+  .auto-save-indicator.saved {
+    @apply bg-green-50 text-green-600;
+  }
+
+  .auto-save-indicator.error {
+    @apply bg-red-50 text-red-600;
+  }
+
+  .loading-spinner {
+    @apply animate-spin rounded-full h-5 w-5 border-b-2 border-current;
+  }
+
+  .loading-spinner-lg {
+    @apply animate-spin rounded-full h-8 w-8 border-b-2 border-current;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-gray-900 via-green-800 to-emerald-800 bg-clip-text text-transparent;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-sm border border-white/50 shadow-lg;
+  }
+}
+
+/* Custom Utility Classes */
+@layer utilities {
+  .text-primary {
+    color: var(--primary-500);
+  }
+
+  .bg-primary {
+    background-color: var(--primary-500);
+  }
+
+  .border-primary {
+    border-color: var(--primary-500);
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+  }
+
+  .gradient-card {
+    background: linear-gradient(135deg, var(--primary-50) 0%, white 100%);
+  }
+}
+
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Animation for smooth page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* Focus styles for accessibility */
+.focus-visible:focus {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
